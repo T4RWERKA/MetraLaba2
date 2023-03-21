@@ -1,21 +1,3 @@
-function heapSort(arr: number[]) {  
-    let heapSize = arr.length;  
-    buildMaxHeap(arr);  
-    while (heapSize > 1) {  
-        heapSize--;  
-        swap(arr, 0, heapSize);  
-        maxHeapify(arr, heapSize, 0);  
-    }  
-    return arr;  
-}  
-function buildMaxHeap(arr: number[]) {  
-    const middle = Math.floor(arr.length / 2);  
-    for (let i = middle; i >= 0; i--) {  
-        maxHeapify(arr, arr.length, i);  
-    }  
-    console.log("if if if if if if if if if"); 
-} 
-
 if (1 == 1) {
     switch (day) { 
         case 0: 
@@ -23,6 +5,15 @@ if (1 == 1) {
                 if (i < 5) {
                     console.log("i"); 
                 } else {
+                    while (1 < 2) {
+                        for (let j = 0; j < 20; j++) {
+                            while (j < 3) {
+                                while (7 > 6) {
+                                    console.log("aboba");
+                                }
+                            }
+                        }
+                    }
                     console.log(i * i);
                 }
             }
