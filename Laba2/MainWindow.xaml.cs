@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace Laba2
 {
@@ -33,7 +35,17 @@ namespace Laba2
         }
         private void boxCode_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            string strCode = new TextRange(boxCode.Document.ContentStart, boxCode.Document.ContentEnd).Text;
+            byte[] byteArray = Encoding.ASCII.GetBytes(strCode);
+            code = new List<string>();
+            using (MemoryStream stream = new MemoryStream(byteArray))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    while (!reader.EndOfStream)
+                        code.Add(reader.ReadLine());
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,7 +79,7 @@ namespace Laba2
             lblAbsDif.Content = Halsted.GetCL();
             lblRelateDif.Content = Math.Round(Halsted.Getcl(), 3);
 
-            string? strCode = "";
+            string strCode = "";
             foreach (string str in code)
                 strCode += str + "\n";
             lblMaxLvl.Content = Jilb.MaxNestLvl(strCode);
